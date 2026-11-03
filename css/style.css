@@ -43,10 +43,9 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 section .wrap.stack { display: block; }
 .gallery { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
 .card { display: block; color: inherit; text-decoration: none; }
-.card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--rule); transition: opacity .15s; }
-.card-title { display: flex; justify-content: space-between; gap: 1rem; padding-top: .75rem; }
+.card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--rule); transition: opacity .15s; }
+.card-title { display: block; padding-top: .75rem; }
 .card-title strong { font-weight: 600; transition: color .15s; }
-.card-title span { color: var(--muted); }
 .card-desc { display: block; margin-top: .25rem; color: var(--muted); font-size: .95rem; }
 .card:hover strong, .card:focus-visible strong { color: var(--accent); }
 .card:hover img, .card:focus-visible img { opacity: .85; }
@@ -76,13 +75,20 @@ footer p { margin: 0; }
 .more .gallery { margin-top: 2rem; }
 
 /* ---------- Project pages ---------- */
+.intro { display: flow-root; }
+section .wrap > div { display: flow-root; }
 .back { display: inline-block; margin-top: 2rem; }
 .back + .intro { padding-top: 1.5rem; }
 .facts { display: flex; flex-wrap: wrap; gap: .5rem 2.5rem; margin: 1.5rem 0 0; padding: 0; }
 .facts dt { font-size: .9rem; color: var(--muted); }
 .facts dd { margin: 0; font-weight: 600; }
-.detail-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--rule); }
-.figures { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); margin-top: 1.5rem; }
-.figures figure { margin: 0; }
-.figures img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--rule); }
-.figures figcaption { margin-top: .5rem; font-size: .9rem; color: var(--muted); }
+
+/* Images that text wraps around: give the <figure> class "left" or "right" */
+.wrap-img { width: 46%; margin: .35rem 0 1rem; clear: both; }
+.wrap-img.right { float: right; margin-left: 2rem; }
+.wrap-img.left  { float: left;  margin-right: 2rem; }
+.wrap-img img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--rule); }
+.wrap-img figcaption { margin-top: .5rem; font-size: .9rem; color: var(--muted); }
+@media (max-width: 640px) {
+  .wrap-img.left, .wrap-img.right { float: none; width: 100%; margin: 1rem 0; }
+}
