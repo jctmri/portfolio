@@ -1,12 +1,138 @@
 <!DOCTYPE html>
-<htmllang ="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <p>jctmri@student.ubc.ca</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT: your name -->
+  <title>Jacob San Juan – Mechanical Engineering Portfolio</title>
+  <meta name="description" content="Projects by Jacob San Juan: technical design, data analysis, task automation, etc.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F7F8F9; --ink: #1A1F24; --muted: #5B6770; --rule: #DCE2E6; --blue: #1F55A4;
+      --head: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --body: "Barlow", system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #12181D; --ink: #E8EDF0; --muted: #9AA8B1; --rule: #28333B; --blue: #7FB0F0; }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 1.0625rem/1.6 var(--body); }
+    a { color: var(--blue); text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .wrap { width: min(960px, 100% - 2.5rem); margin-inline: auto; }
+
+    /* ---------- Tabs ---------- */
+    .topbar { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--rule); }
+    .topbar .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem 2rem; }
+    .brand { font: 600 1.5rem/1 var(--head); color: var(--ink); text-decoration: none; padding: 1rem 0; }
+    .tabs { display: flex; gap: 1.75rem; margin: 0; padding: 0; list-style: none; }
+    .tabs a {
+      display: block; padding: 1rem 0 calc(1rem - 2px); color: var(--muted); text-decoration: none; font-weight: 500;
+      border-bottom: 2px solid transparent; transition: color .15s, border-color .15s;
+    }
+    .tabs a:hover, .tabs a:focus-visible { color: var(--ink); border-bottom-color: var(--blue); }
+
+    /* ---------- Front page ---------- */
+    .intro { padding: clamp(3rem, 9vw, 6rem) 0 2rem; }
+    h1 { font: 600 clamp(2.75rem, 8vw, 5rem)/1 var(--head); margin: 0 0 1rem; }
+    .lede { font-size: 1.3rem; color: var(--muted); max-width: 36ch; margin: 0; }
+
+    /* Any photo you drop in is cropped to a 16:9 frame */
+    .hero-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--rule); }
+
+    section { padding: clamp(2.5rem, 7vw, 4.5rem) 0 0; scroll-margin-top: 3.5rem; }
+    @media (min-width: 760px) { section .wrap { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; } }
+    h2 { font: 600 1.75rem/1.2 var(--head); margin: 0 0 1rem; }
+    p { margin: 0 0 1rem; max-width: 62ch; }
+
+    .projects { list-style: none; margin: 0; padding: 0; }
+    .projects li { border-top: 1px solid var(--rule); }
+    .projects li:last-child { border-bottom: 1px solid var(--rule); }
+    .project { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1rem 0; color: inherit; text-decoration: none; }
+    .project strong { font-weight: 600; transition: color .15s; }
+    .project:hover strong, .project:focus-visible strong { color: var(--blue); }
+    .project span { color: var(--muted); }
+
+    footer { margin-top: clamp(3rem, 8vw, 5rem); border-top: 1px solid var(--rule); padding: 1.5rem 0 3rem; color: var(--muted); font-size: .95rem; }
+    footer p { margin: 0; }
+
+    /* ---------- Load-in: the name and tagline rise, then the image wipes in from the left ---------- */
+    @keyframes rise   { from { opacity: 0; transform: translateY(12px); } }
+    @keyframes reveal { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+    .intro h1, .intro .lede { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
+    .intro .lede { animation-delay: .12s; }
+    .hero-img { animation: reveal 1s cubic-bezier(.65, 0, .2, 1) .3s both; }
+    @media (prefers-reduced-motion: reduce) {
+      .intro h1, .intro .lede, .hero-img { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="#top">Home</a>
+      <ul class="tabs">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap">
+      <div class="intro">
+        <!-- EDIT: your name and one sentence about what you build -->
+        <h2>Hi, I'm</h2>
+        <h1>Jacob San Juan,</h1>
+        <p class="lede">a Mechanical Engineering student with projects based around technical design, data analysis, task automation and more. Scroll down to see my projects (THIS PORTFOLIO IS WIP)</p>
+      </div>
+      <!-- EDIT: change src to your own photo, e.g. images/rover.jpg, and rewrite the alt text -->
+      <img class="hero-img" src="images/placeholder.svg" width="1600" height="900" alt="Placeholder for a photo of my best project">
+    </div>
+
+    <section id="projects">
+      <div class="wrap">
+        <h2>Projects</h2>
+        <!-- EDIT: one <li> per project; point href at its page or its GitHub repo -->
+        <ul class="projects">
+          <li><a class="project" href="#"><strong>Magnetic Levitation Device</strong><span>2026</span></a></li>
+          <li><a class="project" href="#"><strong>Rainwater Harvesting System Analysis</strong><span>2025</span></a></li>
+          <li><a class="project" href="#"><strong>Brunelleschi Reversible Wooden Pulley</strong><span>2025</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <h2>About</h2>
+        <div>
+          <!-- EDIT: two or three sentences about you -->
+          <p>I'm a second year mechanical engineering student at the University of British Columbia in Vancouver, BC. I like projects involving technical design and simulation, or computer work in general. I am actively searching for co-op opportunities starting Summer 2027.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <div>
+          <p><a href="mailto:jctmri@student.ubc.ca">jctmri@student.ubc.ca</a></p>
+          <p><a href="https://www.linkedin.com/in/jctmri">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>Built with plain HTML and CSS.</p></div>
+  </footer>
+
+</body>
 </html>
