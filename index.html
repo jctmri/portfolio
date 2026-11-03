@@ -51,13 +51,17 @@
     h2 { font: 600 1.75rem/1.2 var(--head); margin: 0 0 1rem; }
     p { margin: 0 0 1rem; max-width: 62ch; }
 
-    .projects { list-style: none; margin: 0; padding: 0; }
-    .projects li { border-top: 1px solid var(--rule); }
-    .projects li:last-child { border-bottom: 1px solid var(--rule); }
-    .project { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1rem 0; color: inherit; text-decoration: none; }
-    .project strong { font-weight: 600; transition: color .15s; }
-    .project:hover strong, .project:focus-visible strong { color: var(--accent); }
-    .project span { color: var(--muted); }
+    /* Projects: heading on top, full-width gallery underneath */
+    section .wrap.stack { display: block; }
+    .gallery { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+    .card { display: block; color: inherit; text-decoration: none; }
+    .card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--rule); transition: opacity .15s; }
+    .card-title { display: flex; justify-content: space-between; gap: 1rem; padding-top: .75rem; }
+    .card-title strong { font-weight: 600; transition: color .15s; }
+    .card-title span { color: var(--muted); }
+    .card-desc { display: block; margin-top: .25rem; color: var(--muted); font-size: .95rem; }
+    .card:hover strong, .card:focus-visible strong { color: var(--accent); }
+    .card:hover img, .card:focus-visible img { opacity: .85; }
 
     footer { margin-top: clamp(3rem, 8vw, 5rem); border-top: 1px solid var(--rule); padding: 1.5rem 0 3rem; color: var(--muted); font-size: .95rem; }
     footer p { margin: 0; }
@@ -79,8 +83,8 @@
     <div class="wrap">
       <a class="brand" href="#top">Home</a>
       <ul class="tabs">
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -97,25 +101,38 @@
       <img class="hero-img" src="images/placeholder.svg" width="1600" height="900" alt="placeholder">
     </div>
 
-    <section id="projects">
-      <div class="wrap">
-        <h2>Projects</h2>
-        <!-- EDIT: one <li> per project; point href at its page or its GitHub repo -->
-        <ul class="projects">
-          <li><a class="project" href="#"><strong>Magnetic Levitation Device</strong><span>2026</span></a></li>
-          <li><a class="project" href="#"><strong>Rainwater Harvesting System Analysis</strong><span>2025</span></a></li>
-          <li><a class="project" href="#"><strong>Brunelleschi Reversible Wooden Pulley</strong><span>2025</span></a></li>
-        </ul>
-      </div>
-    </section>
-
     <section id="about">
       <div class="wrap">
         <h2>About</h2>
         <div>
           <!-- EDIT: two or three sentences about you -->
-          <p>I'm a second year mechanical engineering student at the University of British Columbia in Vancouver, BC. I like projects involving technical design and simulation, or computer work in general. I am actively searching for co-op opportunities starting Summer 2027.</p>
+          <p>I'm a second year mechanical engineering student at the University of British Columbia in Vancouver, BC. I mostly specialize in projects involving technical design, simulation, and most computer work in general, although I absolutely enjoy hands-on work as well. I am actively searching for co-op opportunities starting Summer 2027.</p>
         </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap stack">
+        <h2>Projects</h2>
+        <!-- EDIT: one <li> per project. Change the img src to your photo (e.g. images/levitation.jpg),
+             add a short description in alt="", and point href at the project page or GitHub repo -->
+        <ul class="gallery">
+          <li><a class="card" href="#">
+            <img src="images/placeholder.svg" width="1600" height="900" alt="">
+            <span class="card-title"><strong>Magnetic Levitation Device</strong><span>2026</span></span>
+            <span class="card-desc">i'll write this description later</span>
+          </a></li>
+          <li><a class="card" href="#">
+            <img src="images/placeholder.svg" width="1600" height="900" alt="">
+            <span class="card-title"><strong>Rainwater Harvesting System Analysis</strong><span>2025</span></span>
+            <span class="card-desc">i'll write this description later</span>
+          </a></li>
+          <li><a class="card" href="#">
+            <img src="images/placeholder.svg" width="1600" height="900" alt="">
+            <span class="card-title"><strong>Brunelleschi Reversible Wooden Pulley</strong><span>2025</span></span>
+            <span class="card-desc">i'll write this description later</span>
+          </a></li>
+        </ul>
       </div>
     </section>
 
@@ -131,7 +148,7 @@
   </main>
 
   <footer>
-    <div class="wrap"><p>Built with plain HTML and CSS.</p></div>
+    <div class="wrap"><p>HTML, CSS.</p></div>
   </footer>
 
 </body>
